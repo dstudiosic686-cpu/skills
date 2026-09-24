@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>__PAGE_TITLE__</title>
+<link rel="icon" type="image/png" href="__LOGO_DATA_URI__">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --electric-blue:#0047d4;
+    --electric-blue-hover:#0036a3;
+    --tech-cyan:#00b4d8;
+    --accent-yellow:#facc15;
+    --deep-industrial:#0b132b;
+    --deep-navy:#060d20;
+    --success-green:#16a34a;
+    --surface:#f4f6fb;
+    --surface-card:#ffffff;
+    --border:#dde3ee;
+    --text:#101520;
+    --text-muted:#5b6474;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);padding-bottom:110px;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+  header.rv-header{background:var(--deep-industrial);color:#fff;padding:32px 20px 40px;}
+  .rv-header-inner{max-width:960px;margin:0 auto;display:flex;gap:18px;align-items:flex-start;}
+  .rv-header-inner img{width:52px;height:52px;object-fit:contain;flex-shrink:0;}
+  .rv-header h1{font-size:22px;margin:0 0 6px;font-weight:800;}
+  .rv-header p{margin:0;color:#c3cbdb;font-size:14.5px;line-height:1.55;max-width:640px;}
+  .rv-instructions{max-width:960px;margin:-20px auto 0;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;box-shadow:0 8px 24px -12px rgba(11,19,43,.15);position:relative;z-index:2;}
+  .rv-instructions h2{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--electric-blue);margin:0 0 10px;font-weight:700;}
+  .rv-instructions ol{margin:0;padding-left:20px;font-size:14.5px;line-height:1.7;color:var(--text);}
+  .rv-instructions li b{color:var(--deep-industrial);}
+  main{max-width:960px;margin:32px auto;padding:0 20px;}
+  .rv-section{margin-bottom:36px;}
+  .rv-section-title{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--electric-blue);display:inline-block;padding:8px 16px;border-radius:6px 6px 0 0;}
+  .rv-section-body{background:var(--surface-card);border:1px solid var(--border);border-radius:0 8px 8px 8px;padding:24px;display:flex;flex-direction:column;gap:20px;}
+  .rv-field{border-left:3px solid transparent;padding-left:14px;transition:border-color .25s ease, background .25s ease;border-radius:4px;}
+  .rv-field.rv-changed{border-left-color:var(--accent-yellow);background:#fffbeb;padding:10px 10px 10px 14px;margin:-10px -10px -10px -4px;}
+  .rv-field label.rv-label{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+  .rv-changed-badge{display:none;font-size:10px;font-weight:700;text-transform:uppercase;background:var(--accent-yellow);color:#3a2e00;padding:2px 8px;border-radius:99px;letter-spacing:.05em;}
+  .rv-field.rv-changed .rv-changed-badge{display:inline-block;}
+  .rv-field input[type=text]{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:15px;color:var(--text);background:#fbfcfe;}
+  .rv-field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;font-size:15px;color:var(--text);background:#fbfcfe;resize:vertical;min-height:70px;line-height:1.5;}
+  .rv-field input[type=text]:focus,.rv-field textarea:focus{outline:none;border-color:var(--electric-blue);background:#fff;}
+  .rv-image-field{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;}
+  .rv-image-preview{width:180px;height:135px;border-radius:6px;overflow:hidden;border:1.5px solid var(--border);background:#eef1f6 center/cover no-repeat;flex-shrink:0;}
+  .rv-image-preview img{width:100%;height:100%;object-fit:cover;display:block;}
+  .rv-image-actions{display:flex;flex-direction:column;gap:8px;justify-content:center;}
+  .rv-upload-btn{display:inline-flex;align-items:center;gap:8px;background:var(--electric-blue);color:#fff;border:none;padding:10px 18px;border-radius:6px;font-size:13.5px;font-weight:700;cursor:pointer;transition:background .2s;}
+  .rv-upload-btn:hover{background:var(--electric-blue-hover);}
+  .rv-image-filename{font-size:12.5px;color:var(--text-muted);max-width:220px;word-break:break-all;}
+  .rv-general-textarea textarea{min-height:120px;}
+  footer.rv-footer{max-width:960px;margin:0 auto;padding:10px 20px 60px;color:var(--text-muted);font-size:12.5px;text-align:center;}
+  .rv-bottombar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);box-shadow:0 -8px 24px -12px rgba(11,19,43,.15);z-index:50;}
+  .rv-bottombar-inner{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .rv-counter{font-size:14px;color:var(--text-muted);font-weight:600;}
+  .rv-counter b{color:var(--deep-industrial);}
+  .rv-btn-group{display:flex;gap:10px;}
+  .rv-btn-discard{background:none;border:1.5px solid var(--border);color:var(--text-muted);padding:12px 18px;border-radius:6px;font-weight:700;font-size:13.5px;cursor:pointer;}
+  .rv-btn-save{background:var(--success-green);color:#fff;border:none;padding:12px 22px;border-radius:6px;font-weight:800;font-size:14.5px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 6px 16px -6px rgba(22,163,74,.5);}
+  .rv-btn-save:hover{opacity:.92;}
+  .rv-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--deep-industrial);color:#fff;padding:14px 22px;border-radius:8px;font-size:14px;font-weight:600;z-index:100;box-shadow:0 10px 30px -8px rgba(0,0,0,.4);display:none;}
+  @media (max-width:600px){
+    .rv-header-inner{flex-direction:column;align-items:center;text-align:center;}
+    .rv-header p{max-width:100%;}
+    .rv-image-preview{width:100%;height:180px;}
+    .rv-bottombar-inner{flex-direction:column;align-items:stretch;}
+    .rv-btn-group{justify-content:stretch;}
+    .rv-btn-group button{flex:1;}
+  }
+</style>
+</head>
+<body>
+<header class="rv-header">
+  <div class="rv-header-inner">
+    <img src="__LOGO_DATA_URI__" alt="__CLIENT_NAME__">
+    <div>
+      <h1>__PAGE_TITLE__</h1>
+      <p>__INTRO_TEXT__</p>
+    </div>
+  </div>
+</header>
+<div class="rv-instructions">
+  <h2>Cómo usar este archivo</h2>
+  <ol>
+    <li>Revisa cada sección. Si un texto necesita corrección, <b>edítalo directamente</b> en su cuadro.</li>
+    <li>Si una imagen debe cambiarse, presiona <b>"Cambiar imagen"</b> debajo de ella y elige el nuevo archivo desde tu computadora o celular.</li>
+    <li>Los campos que edites se marcan en <b>amarillo</b> para que sea fácil identificarlos después.</li>
+    <li>Al terminar, presiona <b>"Guardar cambios y descargar"</b> — se descargará este mismo archivo con tus correcciones ya incluidas.</li>
+    <li>Regresa ese archivo descargado por WhatsApp o correo a quien te lo compartió.</li>
+  </ol>
+</div>
+<main id="app"></main>
+<footer class="rv-footer">__CLIENT_NAME__ — Documento de revisión interno. No es la página web pública.</footer>
+<div class="rv-toast" id="rv-toast"></div>
+<div class="rv-bottombar">
+  <div class="rv-bottombar-inner">
+    <span class="rv-counter" id="rv-counter"><b>0</b> campos modificados</span>
+    <div class="rv-btn-group">
+      <button class="rv-btn-discard" id="rv-discard-btn" type="button">Descartar cambios</button>
+      <button class="rv-btn-save" id="rv-save-btn" type="button">
+        <span class="material-symbols-outlined">download</span>
+        Guardar cambios y descargar
+      </button>
+    </div>
+  </div>
+</div>
+<script id="content-data" type="application/json">__FIELDS_JSON__</script>
+<script id="bootstrap-script">
+(function(){
+  "use strict";
+  var dataEl = document.getElementById('content-data');
+  var fields = JSON.parse(dataEl.textContent);
+  var app = document.getElementById('app');
+  var counterEl = document.getElementById('rv-counter');
+  var toastEl = document.getElementById('rv-toast');
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+
+  function fieldIsChanged(f){
+    if (f.type === 'image') return !!f.changed;
+    return f.value !== f.original;
+  }
+
+  function updateCounter(){
+    var n = fields.filter(fieldIsChanged).length;
+    counterEl.innerHTML = '<b>' + n + '</b> campo' + (n === 1 ? '' : 's') + ' modificado' + (n === 1 ? '' : 's');
+  }
+
+  function sectionsInOrder(){
+    var seen = [];
+    fields.forEach(function(f){ if (seen.indexOf(f.section) === -1) seen.push(f.section); });
+    return seen;
+  }
+
+  function render(){
+    app.innerHTML = '';
+    sectionsInOrder().forEach(function(sectionName){
+      var sectionFields = fields.filter(function(f){ return f.section === sectionName; });
+      var sectionEl = document.createElement('section');
+      sectionEl.className = 'rv-section';
+      var titleEl = document.createElement('div');
+      titleEl.className = 'rv-section-title';
+      titleEl.textContent = sectionName;
+      var bodyEl = document.createElement('div');
+      bodyEl.className = 'rv-section-body';
+      sectionFields.forEach(function(f){
+        bodyEl.appendChild(renderField(f));
+      });
+      sectionEl.appendChild(titleEl);
+      sectionEl.appendChild(bodyEl);
+      app.appendChild(sectionEl);
+    });
+  }
+
+  function renderField(f){
+    var wrap = document.createElement('div');
+    wrap.className = 'rv-field' + (fieldIsChanged(f) ? ' rv-changed' : '') + (f.id === 'general_comments' ? ' rv-general-textarea' : '');
+    wrap.dataset.fieldId = f.id;
+
+    var label = document.createElement('label');
+    label.className = 'rv-label';
+    var labelText = document.createElement('span');
+    labelText.textContent = f.label;
+    var badge = document.createElement('span');
+    badge.className = 'rv-changed-badge';
+    badge.textContent = 'Editado';
+    label.appendChild(labelText);
+    label.appendChild(badge);
+    wrap.appendChild(label);
+
+    if (f.type === 'text'){
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.value = f.value;
+      input.addEventListener('input', function(){
+        f.value = input.value;
+        wrap.classList.toggle('rv-changed', fieldIsChanged(f));
+        updateCounter();
+      });
+      wrap.appendChild(input);
+    } else if (f.type === 'textarea'){
+      var ta = document.createElement('textarea');
+      ta.value = f.value;
+      ta.rows = Math.min(10, Math.max(2, Math.ceil(f.value.length / 70)));
+      ta.addEventListener('input', function(){
+        f.value = ta.value;
+        wrap.classList.toggle('rv-changed', fieldIsChanged(f));
+        updateCounter();
+      });
+      wrap.appendChild(ta);
+    } else if (f.type === 'image'){
+      var row = document.createElement('div');
+      row.className = 'rv-image-field';
+
+      var preview = document.createElement('div');
+      preview.className = 'rv-image-preview';
+      var img = document.createElement('img');
+      img.src = f.value;
+      img.alt = f.label;
+      preview.appendChild(img);
+
+      var actions = document.createElement('div');
+      actions.className = 'rv-image-actions';
+
+      var fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/*';
+      fileInput.style.display = 'none';
+      var inputId = 'file-' + f.id;
+      fileInput.id = inputId;
+
+      var uploadBtn = document.createElement('button');
+      uploadBtn.type = 'button';
+      uploadBtn.className = 'rv-upload-btn';
+      uploadBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px;">upload</span> Cambiar imagen';
+      uploadBtn.addEventListener('click', function(){ fileInput.click(); });
+
+      var filenameEl = document.createElement('span');
+      filenameEl.className = 'rv-image-filename';
+      filenameEl.textContent = f.changed ? (f.filename || 'Imagen reemplazada') : '';
+
+      fileInput.addEventListener('change', function(){
+        var file = fileInput.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(e){
+          f.value = e.target.result;
+          f.changed = true;
+          f.filename = file.name;
+          img.src = f.value;
+          filenameEl.textContent = file.name;
+          wrap.classList.add('rv-changed');
+          updateCounter();
+        };
+        reader.readAsDataURL(file);
+      });
+
+      actions.appendChild(uploadBtn);
+      actions.appendChild(filenameEl);
+      row.appendChild(preview);
+      row.appendChild(actions);
+      row.appendChild(fileInput);
+      wrap.appendChild(row);
+    }
+
+    return wrap;
+  }
+
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.style.display = 'block';
+    setTimeout(function(){ toastEl.style.display = 'none'; }, 3500);
+  }
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function buildExportHtml(){
+    dataEl.textContent = JSON.stringify(fields);
+    var headHtml = document.head.outerHTML;
+    var bootstrapHtml = document.getElementById('bootstrap-script').outerHTML;
+    var dataHtml = dataEl.outerHTML;
+    return '<!DOCTYPE html>\n<html lang="es-MX">\n' + headHtml + '\n<body>\n' +
+      document.querySelector('header.rv-header').outerHTML + '\n' +
+      document.querySelector('.rv-instructions').outerHTML + '\n' +
+      '<main id="app"></main>\n' +
+      document.querySelector('footer.rv-footer').outerHTML + '\n' +
+      '<div class="rv-toast" id="rv-toast"></div>\n' +
+      document.querySelector('.rv-bottombar').outerHTML + '\n' +
+      dataHtml + '\n' + bootstrapHtml + '\n</body>\n</html>';
+  }
+
+  document.getElementById('rv-save-btn').addEventListener('click', function(){
+    var html = buildExportHtml();
+    var blob = new Blob([html], {type: 'text/html'});
+    var url = URL.createObjectURL(blob);
+    var now = new Date();
+    var fname = '__FILE_PREFIX__-revision-' + now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + '-' + pad(now.getHours()) + pad(now.getMinutes()) + '.html';
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = fname;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    showToast('Archivo descargado: ' + fname);
+  });
+
+  document.getElementById('rv-discard-btn').addEventListener('click', function(){
+    if (confirm('¿Descartar todos los cambios sin guardar y volver a empezar?')) {
+      location.reload();
+    }
+  });
+
+  render();
+  updateCounter();
+})();
+</script>
+</body>
+</html>
