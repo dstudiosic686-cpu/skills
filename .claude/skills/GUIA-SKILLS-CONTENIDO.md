@@ -40,3 +40,22 @@ Ejemplo: "Limpia este video con /cut-video y luego ponle zooms: ~/Desktop/crudo.
 - Las skills de video corren mejor en Claude Code **en tu Mac** (cut-video y clipify usan aceleración de Apple).
 - Las skills de ericosiu traen un aviso de telemetría opcional; si te pregunta, puedes decir que no.
 - Fuentes: tenfoldmarc/carousel-lite, itchernetski/threads-carousel-claude-skill, remotion-dev/skills, louisedesadeleer/{cut-video,add-zooms,clipify}, ericosiu/ai-marketing-skills.
+
+---
+
+# Skills para páginas web (agregadas 24 oct 2026)
+
+| Skill | Para qué | Cómo pedirlo |
+|---|---|---|
+| `gsap-core`, `gsap-scrolltrigger`, `gsap-timeline`, `gsap-plugins`, `gsap-react`, `gsap-performance`… | Animaciones web: scroll, pinning, texto que se revela, transiciones | "Anima el hero con GSAP: el título entra letra por letra y las tarjetas aparecen al hacer scroll" |
+| `gsap-awwwards-website` | Plantilla de landing animada (React + Tailwind + GSAP) | "Crea la landing de [cliente] con la plantilla gsap-awwwards-website" (se crea en `sites/<cliente>`) |
+| `landing-page-optimizer` | Hero, CTAs, CTA fijo en celular, GA4, SEO | "Optimiza los CTAs de esta landing para convertir más" |
+| `responsive-craft` | Celular / tablet / laptop / escritorio | `/responsive-craft preview` para ver los 4 tamaños lado a lado; `/responsive-craft audit` para corregir |
+
+Combo recomendado para cada sitio de cliente:
+1. `ui-ux-pro-max` → estilo y paleta
+2. `gsap-*` → animaciones
+3. `landing-page-optimizer` → CTA visible en el hero + botón fijo de WhatsApp/Agendar en celular
+4. `responsive-craft audit` → que se vea perfecto en todos los tamaños
+
+Fuentes: greensock/gsap-skills (MIT), eng0ai/eng0-template-skills, onewave-ai/claude-skills, kylezantos/responsive-craft.
