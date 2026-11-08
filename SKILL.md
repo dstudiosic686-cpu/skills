@@ -1,6 +1,6 @@
 ---
 name: web-edicion-incremental
-description: Usar al modificar o mejorar una página web existente: editar solo lo necesario sobre el archivo más reciente, sin releer ni reescribir todo el código.
+description: "Usar al modificar o mejorar una página web existente: editar solo lo necesario sobre el archivo más reciente, sin releer ni reescribir todo el código."
 ---
 
 # Edición incremental de páginas web (ahorro de tokens)
