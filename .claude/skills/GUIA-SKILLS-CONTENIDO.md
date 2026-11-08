@@ -2,6 +2,13 @@
 
 Instaladas el 24 oct 2026. Úsalas abriendo **Claude Code** dentro de este repo.
 
+## 0. Diseñador gráfico (investiga, analiza y crea desde un brief)
+| Skill | Para qué | Cómo pedirlo |
+|---|---|---|
+| `disenador-grafico` | Brief → referencias → análisis → 2–3 direcciones creativas → pieza final con crítica. Posts, carruseles, feeds, portadas de reels/videos, logos, branding y webs | `/disenador-grafico Carrusel para Dental Studio Group sobre blanqueamiento, entrega en Canva` |
+
+Dile el formato de entrega en la petición: **PNG**, **Figma editable** o **Canva**.
+
 ## 1. Carruseles y posts
 | Skill | Para qué | Cómo pedirlo |
 |---|---|---|
